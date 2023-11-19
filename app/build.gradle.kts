@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "ca.georgebrown.comp3074.myapplication"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "ca.georgebrown.comp3074.myapplication"
