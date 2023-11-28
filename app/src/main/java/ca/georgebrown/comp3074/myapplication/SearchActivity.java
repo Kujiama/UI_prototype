@@ -1,6 +1,7 @@
 package ca.georgebrown.comp3074.myapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,14 +24,24 @@ public class SearchActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             } else if (id == R.id.nav_profile) {
-                Intent intent = new Intent(this, SignInActivity.class);
-                startActivity(intent);
+                if (isUserLoggedIn()) {
+                    // User is logged in, navigate to the profile
+                    Intent intent = new Intent(this, ProfileActivity.class); //
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(this, SignInActivity.class);
+                    startActivity(intent);
+                }
             } else if (id == R.id.nav_search) {
                 Intent intent = new Intent(this, SearchActivity.class);
                 startActivity(intent);
             }
-
             return true;
         });
+    }
+
+    private boolean isUserLoggedIn() {
+        SharedPreferences sharedPreferences = getSharedPreferences("SAVE_USER_DETAIL", MODE_PRIVATE);
+        return sharedPreferences.getBoolean("isSignedIn", false);
     }
 }

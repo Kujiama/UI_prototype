@@ -2,10 +2,9 @@ package ca.georgebrown.comp3074.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -17,11 +16,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Find the ImageView for the logo
-        ImageView logoImageView = findViewById(R.id.logoImageView);
 
-        // Set the logo image resource
+        ImageView logoImageView = findViewById(R.id.logoImageView);
         logoImageView.setImageResource(R.drawable.dinewise);
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -32,16 +30,24 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             } else if (id == R.id.nav_profile) {
-                Intent intent = new Intent(this, SignInActivity.class);
-                startActivity(intent);
+                if (isUserLoggedIn()) {
+                    // User is logged in, navigate to the profile
+                    Intent intent = new Intent(this, ProfileActivity.class); //
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(this, SignInActivity.class);
+                    startActivity(intent);
+                }
             } else if (id == R.id.nav_search) {
-                Intent intent = new Intent(this, SearchActivity.class);
-                startActivity(intent);
-            }
-
+                    Intent intent = new Intent(this, SearchActivity.class);
+                    startActivity(intent);
+                }
             return true;
         });
-
     }
 
+    private boolean isUserLoggedIn() {
+        SharedPreferences sharedPreferences = getSharedPreferences("SAVE_USER_DETAIL", MODE_PRIVATE);
+        return sharedPreferences.getBoolean("isSignedIn", false);
+    }
 }

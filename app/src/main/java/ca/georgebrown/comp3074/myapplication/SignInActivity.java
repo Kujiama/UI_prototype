@@ -88,12 +88,8 @@ public class SignInActivity extends AppCompatActivity {
 
             String userName = account.getDisplayName();
             String userEmail = account.getEmail();
-            SharedPreferences preferences = getSharedPreferences("YOUR_PREFS_NAME", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putBoolean("isSignedIn", true);
-            editor.putString("userName", userName);
-            editor.putString("userEmail", userEmail);
-            editor.apply();
+
+            saveUserDetails(userName, userEmail);
 
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
@@ -103,6 +99,14 @@ public class SignInActivity extends AppCompatActivity {
         } catch (ApiException e) {
             Toast.makeText(this, "Sign-in failed. Error code: " + e.getStatusCode(), Toast.LENGTH_SHORT).show();
         }
+    }
+    private void saveUserDetails(String userName, String userEmail) {
+        SharedPreferences preferences = getSharedPreferences("SAVE_USER_DETAIL", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("isSignedIn", true);
+        editor.putString("userName", userName);
+        editor.putString("userEmail", userEmail);
+        editor.apply();
     }
 
 }

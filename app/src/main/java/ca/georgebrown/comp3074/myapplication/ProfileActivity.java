@@ -19,13 +19,13 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
 
             // Handle navigation item clicks here
             if (id == R.id.nav_home) {
+
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             } else if (id == R.id.nav_profile) {
@@ -43,26 +43,28 @@ public class ProfileActivity extends AppCompatActivity {
         TextView userEmailTextView = findViewById(R.id.user_email_text_view);
 
         // Retrieve user details from SharedPreferences or Intent
-        SharedPreferences preferences = getSharedPreferences("YOUR_PREFS_NAME", MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("SAVE_USER_DETAIL", MODE_PRIVATE);
         String userName = preferences.getString("userName", "");
         String userEmail = preferences.getString("userEmail", "");
 
         // Display user details in TextViews
         userNameTextView.setText(getString(R.string.name_placeholder, userName));
         userEmailTextView.setText(getString(R.string.email_placeholder, userEmail));
-
-
     }
 
     public void signOut(View view) {
-
         GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN).signOut()
                 .addOnCompleteListener(this, task -> {
+                    clearUserSession();
                     // Sign-out successful, go back to the sign-in page or perform other actions
                     Intent intent = new Intent(this, SignInActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
-                    finish(); // Optional: Finish the ProfileActivity
                 });
+    }
+    private void clearUserSession() {
+        SharedPreferences sharedPreferences = getSharedPreferences("SAVE_USER_DETAIL", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear(); // Clear all data in SharedPreferences
+        editor.apply();
     }
 }
