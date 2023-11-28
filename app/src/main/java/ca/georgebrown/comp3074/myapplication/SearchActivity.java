@@ -1,27 +1,18 @@
 package ca.georgebrown.comp3074.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.widget.ImageView;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
 
+public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        // Find the ImageView for the logo
-        ImageView logoImageView = findViewById(R.id.logoImageView);
-
-        // Set the logo image resource
-        logoImageView.setImageResource(R.drawable.dinewise);
+        setContentView(R.layout.activity_search);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -41,7 +32,5 @@ public class MainActivity extends AppCompatActivity {
 
             return true;
         });
-
     }
-
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddRestaurant">
+    tools:context=".AddRestaurantActivity">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -15,7 +15,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.791"
-        app:srcCompat="@android:drawable/btn_star" />
+        app:srcCompat="@android:drawable/btn_star"
+        android:contentDescription="@string/todo" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -27,7 +28,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.791"
-        app:srcCompat="@android:drawable/btn_star" />
+        app:srcCompat="@android:drawable/btn_star"
+        android:contentDescription="@string/todo" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -39,7 +41,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.791"
-        app:srcCompat="@android:drawable/btn_star" />
+        app:srcCompat="@android:drawable/btn_star"
+        android:contentDescription="@string/todo" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -51,7 +54,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.791"
-        app:srcCompat="@android:drawable/btn_star" />
+        app:srcCompat="@android:drawable/btn_star"
+        android:contentDescription="@string/todo" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -63,7 +67,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.791"
-        app:srcCompat="@android:drawable/btn_star" />
+        app:srcCompat="@android:drawable/btn_star"
+        android:contentDescription="@string/todo" />
 
     <EditText
         android:id="@+id/editTextTextMultiLine"
@@ -77,13 +82,15 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.398" />
+        app:layout_constraintVertical_bias="0.307"
+        android:autofillHints="Input Review"
+        tools:ignore="LabelFor" />
 
     <TextView
         android:id="@+id/reviewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Write Your Review"
+        android:text="@string/write_your_review"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,21 +103,20 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Rate the restaurant"
+        android:text="@string/rate_the_restaurant"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
-        app:layout_constraintVertical_bias="0.175" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.68" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="164dp"
         android:layout_height="55dp"
-        android:text="Submit Review"
+        android:text="@string/submit_review"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

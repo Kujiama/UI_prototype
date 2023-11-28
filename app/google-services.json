@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "648747353941",
+    "project_id": "dinewise-86b68",
+    "storage_bucket": "dinewise-86b68.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:648747353941:android:f78e4dee5f23515c9191dc",
+        "android_client_info": {
+          "package_name": "ca.georgebrown.comp3074.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXLeWctCDADFBzuq0evP1R_ZdQsqUNOPA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

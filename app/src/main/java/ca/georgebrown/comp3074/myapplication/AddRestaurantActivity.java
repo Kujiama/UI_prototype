@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 
-public class AddRestaurant extends AppCompatActivity {
+public class AddRestaurantActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +16,7 @@ public class AddRestaurant extends AppCompatActivity {
     // back button on the toolbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.dashboardmenu, menu);
+        getMenuInflater().inflate(R.menu.bottom_navigation_menu, menu);
         return true;
     }
 }
