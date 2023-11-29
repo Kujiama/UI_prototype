@@ -1,12 +1,15 @@
 package ca.georgebrown.comp3074.myapplication;
 
 import android.content.Intent;
+
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -30,6 +33,7 @@ public class SignInActivity extends AppCompatActivity {
 
         // Configure Google Sign-In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                //.requestIdToken("648747353941-pnurtq9ctoekq6471a2infopnruvpcvo.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
 
@@ -67,10 +71,11 @@ public class SignInActivity extends AppCompatActivity {
         });
 
     }
-        private void signIn() {
-            Intent signInIntent = googleSignInClient.getSignInIntent();
-            signInLauncher.launch(signInIntent);
-        }
+
+    private void signIn() {
+        Intent signInIntent = googleSignInClient.getSignInIntent();
+        signInLauncher.launch(signInIntent);
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -82,7 +87,7 @@ public class SignInActivity extends AppCompatActivity {
         }
     }
 
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
@@ -100,6 +105,8 @@ public class SignInActivity extends AppCompatActivity {
             Toast.makeText(this, "Sign-in failed. Error code: " + e.getStatusCode(), Toast.LENGTH_SHORT).show();
         }
     }
+
+
     private void saveUserDetails(String userName, String userEmail) {
         SharedPreferences preferences = getSharedPreferences("SAVE_USER_DETAIL", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();

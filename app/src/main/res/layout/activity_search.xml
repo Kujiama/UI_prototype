@@ -5,20 +5,6 @@
     android:layout_height="match_parent">
 
 
-    <LinearLayout
-        android:id="@+id/navigationBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="635dp"
-        android:background="@android:color/darker_gray"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
