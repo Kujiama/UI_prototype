@@ -9,8 +9,8 @@
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="search_for_a_location">Search for a location…</string>
     <string name="sign_out">Sign Out</string>
-    <string name="name_placeholder">Name: %s</string>
-    <string name="email_placeholder">Email: %s</string>
+    <string name="name_placeholder">%s</string>
+    <string name="email_placeholder">%s</string>
     <string name="submit_review">Submit Review</string>
     <string name="rate_the_restaurant">Rate the restaurant</string>
     <string name="write_your_review">Write Your Review</string>

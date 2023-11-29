@@ -11,5 +11,6 @@
         android:id="@+id/nav_search"
         android:icon="@android:drawable/ic_dialog_map"
         android:title="@string/search" />
+
     <!-- Add more menu items with icons as needed -->
 </menu>
