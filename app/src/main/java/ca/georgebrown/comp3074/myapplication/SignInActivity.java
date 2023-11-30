@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -103,6 +104,8 @@ public class SignInActivity extends AppCompatActivity {
 
         } catch (ApiException e) {
             Toast.makeText(this, "Sign-in failed. Error code: " + e.getStatusCode(), Toast.LENGTH_SHORT).show();
+            Log.e("SignInActivity", "Sign-in failed. Error message: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 

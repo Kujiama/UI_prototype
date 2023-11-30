@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import android.widget.ImageView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.squareup.picasso.Picasso;
 
 
 public class ProfileActivity extends AppCompatActivity {
@@ -18,6 +21,23 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        ImageView profileImageView = findViewById(R.id.profile_image_view);
+
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+
+        // Load profile image using Picasso if the account is not null
+        if (account != null && account.getPhotoUrl() != null) {
+            String profileImageURL = account.getPhotoUrl().toString();
+
+            // Load profile image into the ImageView using Picasso
+            Picasso.get()
+                    .load(profileImageURL)
+                    .placeholder(R.drawable.baseline_person_2_24) // Placeholder image while loading
+                    .error(R.drawable.baseline_error_24) // Error image if loading fails
+                    .into(profileImageView);
+        }
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -62,8 +82,8 @@ public class ProfileActivity extends AppCompatActivity {
                 });
     }
     private void clearUserSession() {
-        SharedPreferences sharedPreferences = getSharedPreferences("SAVE_USER_DETAIL", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        SharedPreferences preferences = getSharedPreferences("SAVE_USER_DETAIL", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
         editor.clear(); // Clear all data in SharedPreferences
         editor.apply();
     }
