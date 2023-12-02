@@ -1,21 +1,30 @@
 {
   "project_info": {
-    "project_number": "648747353941",
-    "project_id": "dinewise-86b68",
-    "storage_bucket": "dinewise-86b68.appspot.com"
+    "project_number": "1089045798330",
+    "project_id": "restaurant-guide-1c2cb",
+    "storage_bucket": "restaurant-guide-1c2cb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:648747353941:android:f78e4dee5f23515c9191dc",
+        "mobilesdk_app_id": "1:1089045798330:android:4c556f556b8df53ef2d183",
         "android_client_info": {
-          "package_name": "ca.georgebrown.comp3074.myapplication"
+          "package_name": "ca.georgebrown.comp3074.restaurantguide"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1089045798330-0qkriusljt38v5k4ebc4mlvsj9k2gs3k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ca.georgebrown.comp3074.restaurantguide",
+            "certificate_hash": "11304a91df05be6ffaab7a0a2a3b0682118121a0"
+          }
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyDXLeWctCDADFBzuq0evP1R_ZdQsqUNOPA"
+          "current_key": "AIzaSyAdtkLLjPTRanFQyz9qIXiFhFL5T5WTt6g"
         }
       ],
       "services": {

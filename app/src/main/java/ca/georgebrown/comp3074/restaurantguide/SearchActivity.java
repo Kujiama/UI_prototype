@@ -1,4 +1,4 @@
-package ca.georgebrown.comp3074.myapplication;
+package ca.georgebrown.comp3074.restaurantguide;
 
 import android.content.Context;
 import android.content.Intent;

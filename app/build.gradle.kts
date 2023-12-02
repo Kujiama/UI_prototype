@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "ca.georgebrown.comp3074.myapplication"
+    namespace = "ca.georgebrown.comp3074.restaurantguide"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "ca.georgebrown.comp3074.myapplication"
+        applicationId = "ca.georgebrown.comp3074.restaurantguide"
         minSdk = 24
         //noinspection EditedTargetSdkVersion
         targetSdk= 34
