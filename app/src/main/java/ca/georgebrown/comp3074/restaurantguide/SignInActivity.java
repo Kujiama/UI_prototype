@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -87,6 +88,19 @@ public class SignInActivity extends AppCompatActivity {
             handleSignInResult(task);
         }
     }
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+        Uri data = intent.getData();
+        if (data != null && "ca.georgebrown.comp3074.restaurantguide".equals(data.getScheme())) {
+            // Handle the custom URI data here, usually after a Google Sign-In flow completion
+            // Extract necessary information from the URI if needed
+            String code = data.getQueryParameter("code"); // Example: Extract code parameter from URI
+            Log.d("SignInActivity", "Code: " + code);
+        }
+    }
+
 
         private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
