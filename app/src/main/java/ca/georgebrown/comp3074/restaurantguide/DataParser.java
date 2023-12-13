@@ -8,20 +8,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class DataParser {
+public class DataParser
+{
     private HashMap<String, String> getPlace(JSONObject googlePlaceJSON) {
         HashMap<String, String> googlePlaceMap = new HashMap<>();
         String placeName = "-NA-";
         String vicinity = "-NA-";
-        String latitude = "";
-        String longitude = "";
-        String reference = "";
+        String latitude;
+        String longitude;
+        String reference;
 
         try {
             if (!googlePlaceJSON.isNull("name")) {
                 placeName = googlePlaceJSON.getString("name");
             }
-            if (!googlePlaceJSON.isNull("vicinity")) {
+            if (!googlePlaceJSON.isNull("vicinity"))
+            {
                 vicinity = googlePlaceJSON.getString("vicinity");
             }
             latitude = googlePlaceJSON.getJSONObject("geometry").getJSONObject("location").getString("lat");
@@ -41,7 +43,7 @@ public class DataParser {
         return googlePlaceMap;
     }
 
-    private List<HashMap<String, String>> getNearByPlaces(JSONArray jsonArray)
+    private List<HashMap<String, String>> getAllNearByPlaces(JSONArray jsonArray)
     {
         int count = jsonArray.length();
         List<HashMap<String, String>> placesList = new ArrayList<>();
@@ -72,6 +74,6 @@ public class DataParser {
         catch (JSONException e) {
             throw new RuntimeException(e);
         }
-        return getNearByPlaces(jsonArray);
+        return getAllNearByPlaces(jsonArray);
     }
 }

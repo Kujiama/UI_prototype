@@ -48,8 +48,6 @@ public class GoogleMapActivity extends FragmentActivity implements
 
     private GoogleMap mMap;
     private GoogleApiClient googleApiClient;
-    private LocationRequest locationRequest;
-    private Location lastLocation;
     private Marker currentLocationMarker;
     private static final int REQUEST_USER_LOCATION_CODE = 99;
     private double latitude, longitude;
@@ -96,7 +94,7 @@ public class GoogleMapActivity extends FragmentActivity implements
     {
 
         String restaurant = "restaurant";
-        Object[] transferData = new Object[2];
+        Object transferData[] = new Object[2];
         GetNearByPlaces getNearByPlaces = new GetNearByPlaces();
 
         if (v.getId() == R.id.search_address) {
@@ -124,7 +122,7 @@ public class GoogleMapActivity extends FragmentActivity implements
                             userMarkerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
                             mMap.addMarker(userMarkerOptions);
                             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                            mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
+                            mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
                         }
                     }
                 } catch (IOException e) {
@@ -145,11 +143,12 @@ public class GoogleMapActivity extends FragmentActivity implements
         }
     }
 
-    private String getUrl(double latitude, double longitude, String restaurant) {
+    private String getUrl(double latitude, double longitude, String nearbyPlace)
+    {
         StringBuilder googleUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
-        googleUrl.append("location=").append(latitude).append(",").append(longitude);
+        googleUrl.append("location=" + latitude +"," + longitude);
         googleUrl.append("&radius=" + 10000);
-        googleUrl.append("&type=").append(restaurant);
+        googleUrl.append("&type=" + nearbyPlace);
         googleUrl.append("&sensor=true");
         googleUrl.append("&key=" + "AIzaSyCit74sWJ0Sn_hjhwytpbr8X8LHez8HLOs");
 
@@ -218,7 +217,6 @@ public class GoogleMapActivity extends FragmentActivity implements
 
         latitude = location.getLatitude();
         longitude = location.getLongitude();
-        lastLocation = location;
 
         if (currentLocationMarker != null) {
             currentLocationMarker.remove();
@@ -234,7 +232,7 @@ public class GoogleMapActivity extends FragmentActivity implements
         currentLocationMarker = mMap.addMarker(markerOptions);
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomBy(10));
+        mMap.animateCamera(CameraUpdateFactory.zoomBy(12));
 
         if (googleApiClient != null) {
             LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient,
@@ -245,7 +243,7 @@ public class GoogleMapActivity extends FragmentActivity implements
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        locationRequest = new LocationRequest();
+        LocationRequest locationRequest = new LocationRequest();
         locationRequest.setInterval(1000); // 1 second
         locationRequest.setFastestInterval(1000); // 1 second
         locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);

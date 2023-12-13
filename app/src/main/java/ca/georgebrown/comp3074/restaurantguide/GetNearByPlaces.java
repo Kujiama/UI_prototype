@@ -13,38 +13,41 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class GetNearByPlaces extends AsyncTask<Object, String, String>
-{
-    private String googlePlaceData, url;
+public class GetNearByPlaces extends AsyncTask<Object, String, String> {
     private GoogleMap mMap;
+    private String googlePlaceData, url;
 
     @Override
     protected String doInBackground(Object... objects) {
 
         mMap = (GoogleMap) objects[0];
-        url = (String) objects[1];
+        String url = (String) objects[1];
 
         DownloadUrl downloadUrl = new DownloadUrl();
         try {
             googlePlaceData = downloadUrl.readUrl(url);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            // Handle IOException if needed
+            return null;
         }
 
+        DataParser parser = new DataParser();
         return googlePlaceData;
     }
 
     @Override
     protected void onPostExecute(String s) {
-        List<HashMap<String, String>> nearByPlacesList = null;
+        List<HashMap<String,String>> nearByPlacesList = null;
         DataParser parser = new DataParser();
         nearByPlacesList = parser.parse(s);
-        DisplayNearByPlaces(nearByPlacesList);
+
+        displayNearByPlaces(nearByPlacesList);
+
     }
 
-    private void DisplayNearByPlaces(List<HashMap<String, String>> nearByPlacesList)
+    private void displayNearByPlaces(List<HashMap<String, String>> nearByPlacesList)
     {
-        for (int i = 0; i < nearByPlacesList.size(); i++)
+        for(int i=0; i<nearByPlacesList.size(); i++)
         {
             MarkerOptions markerOptions = new MarkerOptions();
             HashMap<String, String> googlePlace = nearByPlacesList.get(i);
@@ -66,4 +69,5 @@ public class GetNearByPlaces extends AsyncTask<Object, String, String>
         }
 
     }
+
 }

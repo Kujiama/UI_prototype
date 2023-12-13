@@ -9,20 +9,20 @@ import java.net.URL;
 
 public class DownloadUrl {
 
-    public String readUrl(String myUrl) throws IOException {
+    public String readUrl(String placeUrl) throws IOException {
 
         String Data = "";
         InputStream inputStream = null;
         HttpURLConnection httpURLConnection = null;
 
         try {
-            URL url = new URL(myUrl);
+            URL url = new URL(placeUrl);
             httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.connect();
 
             inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            StringBuffer stringBuffer = new StringBuffer();
+            StringBuilder stringBuffer = new StringBuilder();
 
             String line = "";
 
@@ -39,6 +39,7 @@ public class DownloadUrl {
         }
         finally
         {
+            assert inputStream != null;
             inputStream.close();
             httpURLConnection.disconnect();
         }
