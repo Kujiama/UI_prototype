@@ -9,9 +9,9 @@ android {
 
     defaultConfig {
         applicationId = "ca.georgebrown.comp3074.restaurantguide"
-        minSdk = 24
+        minSdk = 21
         //noinspection EditedTargetSdkVersion
-        targetSdk= 34
+        targetSdk= 33
         versionCode = 1
         versionName = "1.0"
 

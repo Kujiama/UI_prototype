@@ -65,7 +65,7 @@ public class SignInActivity extends AppCompatActivity {
                 Intent intent = new Intent(SignInActivity.this, SignInActivity.class);
                 startActivity(intent);
             } else if (id == R.id.nav_search) {
-                Intent intent = new Intent(SignInActivity.this, SearchActivity.class);
+                Intent intent = new Intent(SignInActivity.this, GoogleMapActivity.class);
                 startActivity(intent);
             }
 

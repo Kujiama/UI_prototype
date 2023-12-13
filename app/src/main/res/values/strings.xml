@@ -14,5 +14,6 @@
     <string name="submit_review">Submit Review</string>
     <string name="rate_the_restaurant">Rate the restaurant</string>
     <string name="write_your_review">Write Your Review</string>
+    <string name="nearby_restaurants">Nearby Restaurants</string>
 
 </resources>

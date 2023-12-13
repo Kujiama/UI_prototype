@@ -52,7 +52,7 @@ public class ProfileActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, ProfileActivity.class);
                 startActivity(intent);
             } else if (id == R.id.nav_search) {
-                Intent intent = new Intent(this, SearchActivity.class);
+                Intent intent = new Intent(this, GoogleMapActivity.class);
                 startActivity(intent);
             }
             return true;
