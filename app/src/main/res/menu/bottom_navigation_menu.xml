@@ -11,6 +11,14 @@
         android:id="@+id/nav_search"
         android:icon="@android:drawable/ic_dialog_map"
         android:title="@string/search" />
+    <item
+        android:id="@+id/nav_review"
+        android:icon="@drawable/baseline_check_circle_outline_24"
+        android:title="@string/submit_review" />
+    <item
+        android:id="@+id/nav_listRestaurants"
+        android:icon="@drawable/baseline_checklist_rtl_24"
+        android:title="@string/listRestaurants" />
 
     <!-- Add more menu items with icons as needed -->
 </menu>

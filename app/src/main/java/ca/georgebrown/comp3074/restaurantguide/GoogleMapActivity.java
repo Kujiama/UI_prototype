@@ -79,6 +79,9 @@ public class GoogleMapActivity extends FragmentActivity implements
                 startActivity(intent);
             } else if (id == R.id.nav_search) {
                 startActivity(new Intent(this, GoogleMapActivity.class));
+            } else if (id == R.id.nav_review) {
+                Intent intent = new Intent(this, AddRestaurantActivity.class);
+                startActivity(intent);
             }
             return true;
         });
@@ -94,7 +97,7 @@ public class GoogleMapActivity extends FragmentActivity implements
     {
 
         String restaurant = "restaurant";
-        Object transferData[] = new Object[2];
+        Object[] transferData = new Object[2];
         GetNearByPlaces getNearByPlaces = new GetNearByPlaces();
 
         if (v.getId() == R.id.search_address) {
@@ -146,9 +149,9 @@ public class GoogleMapActivity extends FragmentActivity implements
     private String getUrl(double latitude, double longitude, String nearbyPlace)
     {
         StringBuilder googleUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
-        googleUrl.append("location=" + latitude +"," + longitude);
+        googleUrl.append("location=").append(latitude).append(",").append(longitude);
         googleUrl.append("&radius=" + 10000);
-        googleUrl.append("&type=" + nearbyPlace);
+        googleUrl.append("&type=").append(nearbyPlace);
         googleUrl.append("&sensor=true");
         googleUrl.append("&key=" + "AIzaSyCit74sWJ0Sn_hjhwytpbr8X8LHez8HLOs");
 
@@ -232,7 +235,7 @@ public class GoogleMapActivity extends FragmentActivity implements
         currentLocationMarker = mMap.addMarker(markerOptions);
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomBy(12));
+        mMap.animateCamera(CameraUpdateFactory.zoomBy(10));
 
         if (googleApiClient != null) {
             LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient,

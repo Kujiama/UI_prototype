@@ -39,6 +39,7 @@
             <data android:host="oauth2redirect" android:scheme="ca.georgebrown.comp3074.restaurantguide" />
         </intent-filter>
         </activity>
+
         <activity
             android:name=".ProfileActivity"
             android:exported="false" />

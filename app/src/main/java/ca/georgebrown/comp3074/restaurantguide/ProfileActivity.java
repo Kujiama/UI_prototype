@@ -54,6 +54,9 @@ public class ProfileActivity extends AppCompatActivity {
             } else if (id == R.id.nav_search) {
                 Intent intent = new Intent(this, GoogleMapActivity.class);
                 startActivity(intent);
+            } else if (id == R.id.nav_review) {
+                Intent intent = new Intent(this, AddRestaurantActivity.class);
+                startActivity(intent);
             }
             return true;
         });
